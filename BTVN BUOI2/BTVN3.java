@@ -2,9 +2,13 @@ package btvn3;
 
 import java.util.Scanner;
 //HIEN THI MENU VOI CAC NOI DUNG:1. NHAP MANG 2. XUAT MANG 3. THEM PHAN TU 4. XOA PHAN TU 5. DAO MANG 6.DUA RA a[1]VA CAC SO CHIA HET CHO a[1]
+
 public class BTVN3 {
 
-    public static void nhapmang(int a[], int n) {
+    static int[] a = null;
+
+    public static void nhapmang(int n) {
+        a = new int[n + 1];
         Scanner sc = new Scanner(System.in);
         System.out.println("\t\tNHAP MANG\n");
         for (int i = 0; i < n; i++) {
@@ -13,9 +17,9 @@ public class BTVN3 {
         }
     }
 
-    public static void xuatmang(int a[], int n) {
+    public static void xuatmang(int a[]) {
         System.out.println("\n\t\tXUAT MANG\n");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < a.length - 1; i++) {
             System.out.println("a[" + i + "]= " + a[i]);
         }
 
@@ -27,9 +31,7 @@ public class BTVN3 {
         }
         a[vt - 1] = x;
         System.out.println("\tMANG SAU KHI CHEN");
-        for (int i = 0; i < a.length; i++) {
-            System.out.println("a[" + i + "]=" + a[i]);
-        }
+        xuatmang(a);
 
     }
 
@@ -38,9 +40,7 @@ public class BTVN3 {
             a[i] = a[i + 1];
         }
         System.out.println("\tMANG SAU KHI XOA");
-        for (int i = 0; i < n - 1; i++) {
-            System.out.println("a[" + i + "]=" + a[i]);
-        }
+        xuatmang(a);
 
     }
 
@@ -77,7 +77,6 @@ public class BTVN3 {
                 System.out.println("\tNHAP LAI");
             }
         } while (n < 0);
-        int[] a = new int[n + 1];
         do {
             System.out.println("\n\t\t1- nhap mang");
             System.out.println("\n\t\t2- xuat mang");
@@ -90,10 +89,10 @@ public class BTVN3 {
             switch (chon) {
                 case 1:
 
-                    nhapmang(a, n);
+                    nhapmang(n);
                     break;
                 case 2:
-                    xuatmang(a, n);
+                    xuatmang(a);
                     break;
                 case 3:
                     System.out.println("\tNHAP GIA TRI CAN CHEN");
